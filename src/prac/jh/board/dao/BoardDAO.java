@@ -59,8 +59,20 @@ public class BoardDAO {
 		return boardList;
 	}
 
-	public Board selectBoard(Connection conn, int boardNo, int memberNo) {
+	public Board selectBoard(Connection conn, int boardNo, int memberNo) throws Exception{
 		// TODO Auto-generated method stub
+		
+		try {
+			String sql = prop.getProperty("selectBoard");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.set
+			
+		} finally {
+			
+		}
+		
 		return null;
 	}
 
