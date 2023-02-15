@@ -3,6 +3,7 @@ package prac.jh.member.view;
 import java.util.List;
 import java.util.Scanner;
 
+import prac.jh.main.view.MainView;
 import prac.jh.member.service.MemberService;
 import prac.jh.member.vo.Member;
 
@@ -181,6 +182,41 @@ public class MemberView {
 
 	private void secession() {
 		// TODO Auto-generated method stub
+		System.out.println("회원탈퇴처리");
+		
+		try {
+			System.out.print("비밀번호 입력 : ");
+			String password = sc.next();
+			
+			while(true) {
+				System.out.print("진짜 탈퇴함? (Y/N)");
+				char yn = sc.next().toUpperCase().charAt(0);
+				
+				if(yn == 'Y') {
+					int result = ms.secession(password, loginMember.getMemberNo());
+					
+					if(result > 0) {
+						System.out.println("잘가");
+						input = 0;
+						MainView.loginMember=null;
+					} else {
+						System.out.println("비밀번호가 일치하지않아용");
+					}
+					break;
+				} else if ( yn == 'N') {
+					System.out.println("취소");
+					break;
+					
+				} else {
+					System.out.println("y n 만 입력");
+				} 
+				
+			}
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

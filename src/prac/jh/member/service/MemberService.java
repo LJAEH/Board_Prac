@@ -54,4 +54,19 @@ public class MemberService {
 		return result ;
 	}
 
+	public int secession(String password, int memberNo) throws Exception {
+		// TODO Auto-generated method stub
+		Connection conn = getConnection();
+		
+		int result = dao.secession(conn, password, memberNo);
+		
+		if(result > 0) commit(conn);
+		else rollback(conn);
+		
+		close(conn);
+		
+		
+		return result;
+	}
+
 }

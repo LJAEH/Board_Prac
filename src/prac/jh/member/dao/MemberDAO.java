@@ -106,4 +106,27 @@ public class MemberDAO {
 		return result;
 	}
 
+
+
+	public int secession(Connection conn, String password, int memberNo) throws Exception{
+		// TODO Auto-generated method stub
+		
+		int result = 0 ;
+		
+		try {
+			String sql = prop.getProperty("secession");
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setString(1, password);
+			pstmt.setInt(2, memberNo);
+			
+			result = pstmt.executeUpdate();
+			
+		} finally { 
+			close(pstmt);
+		}
+		return result;
+	}
+
 }
